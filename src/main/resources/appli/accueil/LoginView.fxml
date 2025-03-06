@@ -18,12 +18,12 @@
       <font>
          <Font size="24.0" />
       </font></Label>
-   <Label fx:id="text1" text="Votre Emial : " />
-   <TextField prefHeight="23.0" prefWidth="149.0" />
-   <Label fx:id="text2" layoutX="70.0" layoutY="85.0" text="Votre Mot de Passe :" />
+   <Label text="Votre Emial : " />
+   <TextField fx:id="email" prefHeight="23.0" prefWidth="149.0" />
+   <Label layoutX="70.0" layoutY="85.0" text="Votre Mot de Passe :" />
    <PasswordField fx:id="mdp" />
    <Label text="Erreur" textFill="RED" />
-   <Button mnemonicParsing="false" text="Connexion" />
-   <Button mnemonicParsing="false" text="Inscription" />
-   <Button mnemonicParsing="false" text="Mot de passe oublié" />
+   <Button onAction="#bouttonConnexion" mnemonicParsing="false" text="Connexion" />
+   <Button onAction="" mnemonicParsing="false" text="Inscription" />
+   <Button onAction="#buttonMDP" mnemonicParsing="false" text="Mot de passe oublié" />
 </VBox>
