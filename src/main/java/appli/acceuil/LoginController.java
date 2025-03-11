@@ -18,20 +18,40 @@ public class LoginController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
     protected void setMdp(PasswordField mdp) {
         this.mdp = mdp;
     }
+
     protected void setEmail(TextField email) {
         this.email = email;
     }
+
     @FXML
     protected void bouttonConnexion(ActionEvent actionEvent){
-        this.email.setText("test@gmail.com");
-        this.mdp.setText("123");
+        System.out.println("Email ="+email.getText());
+        System.out.println("Password ="+mdp.getText());
+        String login = email.getText();
+        String pass = mdp.getText();
+        if (login.equals("admin") && pass.equals("admin")) {
+            System.out.println("Login OK");
+        }else {
+            System.out.println("Erreur ! Login ou mot de passe incorrect");
+        }
     }
 
     @FXML
     protected void buttonMDP(ActionEvent actionEvent) {
     this.setMdp(mdp);
+    }
+
+    public void btnConnexion(ActionEvent actionEvent) {
+        
+    }
+
+    public void btnInscrition(ActionEvent actionEvent) {
+    }
+
+    public void btnMdpOublie(ActionEvent actionEvent) {
     }
 }

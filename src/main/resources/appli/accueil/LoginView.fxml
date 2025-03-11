@@ -23,7 +23,7 @@
    <Label layoutX="70.0" layoutY="85.0" text="Votre Mot de Passe :" />
    <PasswordField fx:id="mdp" />
    <Label text="Erreur" textFill="RED" />
-   <Button onAction="#bouttonConnexion" mnemonicParsing="false" text="Connexion" />
-   <Button onAction="" mnemonicParsing="false" text="Inscription" />
-   <Button onAction="#buttonMDP" mnemonicParsing="false" text="Mot de passe oublié" />
+   <Button mnemonicParsing="false" onAction="#btnConnexion" text="Connexion" />
+   <Button mnemonicParsing="false" onAction="#btnInscrition"  text="Inscription" />
+   <Button mnemonicParsing="false" onAction="#btnMdpOublie" text="Mot de passe oublié" />
 </VBox>
