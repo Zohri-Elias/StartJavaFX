@@ -2,10 +2,14 @@ package appli.acceuil;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -46,10 +50,15 @@ public class LoginController {
     }
 
     public void btnConnexion(ActionEvent actionEvent) {
-        
+
     }
 
-    public void btnInscrition(ActionEvent actionEvent) {
+    public void btnInscrition(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InscriptionView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) email.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void btnMdpOublie(ActionEvent actionEvent) {
