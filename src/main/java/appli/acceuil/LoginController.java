@@ -17,43 +17,24 @@ public class LoginController {
     @FXML
     private PasswordField mdp;
     @FXML
-    private Label welcomeText;
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-    protected void setMdp(PasswordField mdp) {
-        this.mdp = mdp;
-    }
-
-    protected void setEmail(TextField email) {
-        this.email = email;
-    }
+    private Label erreurLabel;
 
     @FXML
-    protected void bouttonConnexion(ActionEvent actionEvent){
-        System.out.println("Email ="+email.getText());
-        System.out.println("Password ="+mdp.getText());
+    protected void btnConnexion(ActionEvent actionEvent) {
         String login = email.getText();
         String pass = mdp.getText();
+
         if (login.equals("admin") && pass.equals("admin")) {
             System.out.println("Login OK");
-        }else {
+            erreurLabel.setText("");
+        } else {
             System.out.println("Erreur ! Login ou mot de passe incorrect");
+            erreurLabel.setText("Erreur : Login ou mot de passe incorrect");
         }
     }
 
     @FXML
-    protected void buttonMDP(ActionEvent actionEvent) {
-    this.setMdp(mdp);
-    }
-
-    public void btnConnexion(ActionEvent actionEvent) {
-
-    }
-
-    public void btnInscrition(ActionEvent actionEvent) throws IOException {
+    protected void btnInscrition(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InscriptionView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) email.getScene().getWindow();
@@ -61,6 +42,9 @@ public class LoginController {
         stage.show();
     }
 
-    public void btnMdpOublie(ActionEvent actionEvent) {
+    @FXML
+    protected void btnMdpOublie(ActionEvent actionEvent) {
+
+        System.out.println("Mot de passe oublié cliqué");
     }
 }

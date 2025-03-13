@@ -23,7 +23,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="87.0" layoutY="403.0" mnemonicParsing="false" text="Inscription" />
-      <Button layoutX="97.0" layoutY="443.0" mnemonicParsing="false" text="Retour" />
+      <Button onAction="#btnInscription" layoutX="87.0" layoutY="403.0" mnemonicParsing="false" text="Inscription" />
+      <Button onAction="#btnRetour" layoutX="97.0" layoutY="443.0" mnemonicParsing="false" text="Retour" />
    </children>
 </AnchorPane>
