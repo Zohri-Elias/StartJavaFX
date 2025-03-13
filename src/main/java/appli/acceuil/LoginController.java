@@ -1,5 +1,6 @@
 package appli.acceuil;
 
+import appli.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,20 +27,17 @@ public class LoginController {
 
         if (login.equals("admin") && pass.equals("admin")) {
             System.out.println("Login OK");
-            erreurLabel.setText("");
+            erreurLabel.setVisible(false);
         } else {
-            System.out.println("Erreur ! Login ou mot de passe incorrect");
+            erreurLabel.setVisible(true);
             erreurLabel.setText("Erreur : Login ou mot de passe incorrect");
         }
     }
 
     @FXML
     protected void btnInscrition(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("InscriptionView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) email.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        System.out.println("Redirection vers L'inscription");
+        StartApplication.changeScene("accueil/Inscription");
     }
 
     @FXML

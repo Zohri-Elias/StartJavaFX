@@ -1,5 +1,6 @@
 package appli.acceuil;
 
+import appli.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,7 @@ public class InscriptionController {
 
     @FXML
     protected void btnInscription(ActionEvent actionEvent) {
+        erreurLabel.setVisible(false);
         String nomText = nom.getText();
         String prenomText = prenom.getText();
         String emailText = email.getText();
@@ -45,22 +47,22 @@ public class InscriptionController {
         System.out.println("Confirmation : " + confirmationText);
 
         if (nomText.isEmpty() || prenomText.isEmpty() || emailText.isEmpty() || mdpText.isEmpty() || confirmationText.isEmpty()) {
+            erreurLabel.setVisible(true);
             erreurLabel.setText("Erreur : Tous les champs doivent être remplis");
         } else if (!mdpText.equals(confirmationText)) {
+            erreurLabel.setVisible(true);
             erreurLabel.setText("Erreur : Les mots de passe ne correspondent pas");
         } else if (emailText.equals("admin@example.com")) {
+            erreurLabel.setVisible(true);
             erreurLabel.setText("Erreur : Cet email est déjà utilisé");
         } else {
-            erreurLabel.setText("Inscription réussie !");
+            System.out.println("Inscription réussie !");
         }
     }
 
     @FXML
     protected void btnRetour(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) nom.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        System.out.println("Redirection vers L'inscription");
+        StartApplication.changeScene("accueil/Login");
     }
 }

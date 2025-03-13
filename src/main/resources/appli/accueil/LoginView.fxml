@@ -22,8 +22,8 @@
    <TextField fx:id="email" prefHeight="23.0" prefWidth="149.0" />
    <Label layoutX="70.0" layoutY="85.0" text="Votre Mot de Passe :" />
    <PasswordField fx:id="mdp" />
-   <Label text="Erreur" textFill="RED" />
-   <Button mnemonicParsing="false" onAction="#btnConnexion" text="Connexion" />
-   <Button mnemonicParsing="false" onAction="#btnInscrition"  text="Inscription" />
-   <Button mnemonicParsing="false" onAction="#btnMdpOublie" text="Mot de passe oublié" />
+   <Label fx:id="erreurLabel" text="Erreur" textFill="RED" visible="false"/>
+   <Button onAction="#btnConnexion" text="Connexion" />
+   <Button onAction="#btnInscrition"  text="Inscription" />
+   <Button onAction="#btnMdpOublie" text="Mot de passe oublié" />
 </VBox>
