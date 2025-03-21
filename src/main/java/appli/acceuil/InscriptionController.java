@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Utilisateur;
+import repository.UtilisateurRepository;
 
 import java.io.IOException;
 
@@ -52,11 +54,12 @@ public class InscriptionController {
         } else if (!mdpText.equals(confirmationText)) {
             erreurLabel.setVisible(true);
             erreurLabel.setText("Erreur : Les mots de passe ne correspondent pas");
-        } else if (emailText.equals("admin@example.com")) {
-            erreurLabel.setVisible(true);
-            erreurLabel.setText("Erreur : Cet email est déjà utilisé");
         } else {
-            System.out.println("Inscription réussie !");
+            String role = "client";
+            UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
+            Utilisateur utilisateur =  new Utilisateur(nomText, prenomText, emailText, mdpText , role);
+            utilisateurRepository.ajouterUtilisateur(utilisateur);
+            erreurLabel.setText("Inscription réussie !");
         }
     }
 

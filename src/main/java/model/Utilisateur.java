@@ -6,20 +6,23 @@ public class Utilisateur {
     private String email;
     private String mdp;
     private int id;
+    private String role;
 
-    public Utilisateur(int id, String nom, String prenom, String email, String mdp) {
+    public Utilisateur(int id, String nom, String prenom, String email, String mdp, String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.mdp = mdp;
+        this.role = role;
     }
 
-    public Utilisateur(String nom, String prenom, String email, String mdp) {
+    public Utilisateur(String nom, String prenom, String email, String mdp, String role) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.mdp = mdp;
+        this.role = "ROLE_USER";
     }
 
     public Utilisateur(String email, String mdp) {
@@ -70,5 +73,13 @@ public class Utilisateur {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

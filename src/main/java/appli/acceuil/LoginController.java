@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import repository.UtilisateurRepository;
+import model.Utilisateur;
 
 import java.io.IOException;
 
@@ -19,6 +21,7 @@ public class LoginController {
     private PasswordField mdp;
     @FXML
     private Label erreurLabel;
+    private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
 
     @FXML
     protected void btnConnexion(ActionEvent actionEvent) {

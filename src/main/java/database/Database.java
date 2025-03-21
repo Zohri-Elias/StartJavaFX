@@ -13,7 +13,7 @@ public class Database {
     }
 
     private static final String SERVEUR = "localhost";
-    private static final String NOM_BDD = "startjavafx";
+    private static final String NOM_BDD = "cours_todolist";
     private static final String UTILISATEUR = "root";
     private static final String MOT_DE_PASSE = "";
     private static String getUrl() {
