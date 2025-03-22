@@ -27,8 +27,9 @@ public class LoginController {
     protected void btnConnexion(ActionEvent actionEvent) {
         String login = email.getText();
         String pass = mdp.getText();
+        Utilisateur utilisateur = utilisateurRepository.getUtilisateurByEmail(pass);
 
-        if (login.equals("admin") && pass.equals("admin")) {
+        if (utilisateur != null && utilisateur.getMdp().equals(pass)) {
             System.out.println("Login OK");
             erreurLabel.setVisible(false);
         } else {

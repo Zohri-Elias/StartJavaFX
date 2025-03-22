@@ -13,6 +13,7 @@ import repository.UtilisateurRepository;
 
 import java.io.IOException;
 
+
 public class InscriptionController {
 
     @FXML
@@ -32,6 +33,7 @@ public class InscriptionController {
 
     @FXML
     private Label erreurLabel;
+    private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
 
     @FXML
     protected void btnInscription(ActionEvent actionEvent) {
@@ -61,6 +63,19 @@ public class InscriptionController {
             utilisateurRepository.ajouterUtilisateur(utilisateur);
             erreurLabel.setText("Inscription réussie !");
         }
+        Utilisateur utilisateurExistant = utilisateurRepository.getUtilisateurByEmail(emailText);
+        if (utilisateurExistant != null) {
+            erreurLabel.setVisible(true);
+            erreurLabel.setText("Erreur : Un utilisateur existe déjà avec cet email");
+            return;
+        }
+        String role = "client";
+        Utilisateur utilisateur = new Utilisateur(nomText, prenomText, emailText, mdpText, role);
+
+        utilisateurRepository.ajouterUtilisateur(utilisateur);
+
+        erreurLabel.setVisible(true);
+        erreurLabel.setText("Inscription réussie !");
     }
 
     @FXML
