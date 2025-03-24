@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Utilisateur;
 import repository.UtilisateurRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.io.IOException;
 
@@ -69,6 +71,10 @@ public class InscriptionController {
             erreurLabel.setText("Erreur : Un utilisateur existe déjà avec cet email");
             return;
         }
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String mdpHash = passwordEncoder.encode(mdpText);
+
         String role = "client";
         Utilisateur utilisateur = new Utilisateur(nomText, prenomText, emailText, mdpText, role);
 

@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import repository.UtilisateurRepository;
 import model.Utilisateur;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.io.IOException;
 
@@ -24,17 +26,25 @@ public class LoginController {
     private UtilisateurRepository utilisateurRepository = new UtilisateurRepository();
 
     @FXML
-    protected void btnConnexion(ActionEvent actionEvent) {
+    protected void btnConnexion(ActionEvent actionEvent) throws IOException {
         String login = email.getText();
         String pass = mdp.getText();
-        Utilisateur utilisateur = utilisateurRepository.getUtilisateurByEmail(pass);
+        Utilisateur utilisateur = utilisateurRepository.getUtilisateurByEmail(login);
 
-        if (utilisateur != null && utilisateur.getMdp().equals(pass)) {
-            System.out.println("Login OK");
-            erreurLabel.setVisible(false);
+        if (utilisateur != null) {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+            if (passwordEncoder.matches(pass, utilisateur.getMdp())) {
+                System.out.println("Connexion réussie !");
+                erreurLabel.setVisible(false);
+                StartApplication.changeScene("accueil/accueilView");
+            } else {
+                erreurLabel.setVisible(true);
+                erreurLabel.setText("Erreur : Mot de passe incorrect");
+            }
         } else {
             erreurLabel.setVisible(true);
-            erreurLabel.setText("Erreur : Login ou mot de passe incorrect");
+            erreurLabel.setText("Erreur : Aucun utilisateur trouvé avec cet email");
         }
     }
 
