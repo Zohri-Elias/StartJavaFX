@@ -10,4 +10,6 @@ module appli.todolistfx {
     exports appli;
     exports appli.acceuil;
     opens appli.acceuil to javafx.fxml;
+    exports;
+    opens to
 }

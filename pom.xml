@@ -43,10 +43,21 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.2.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
-            <version>5.7.6</version>
+            <artifactId>spring-security-core</artifactId>
+            <version>6.4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>23.7.0.25.01</version>
         </dependency>
     </dependencies>
 
