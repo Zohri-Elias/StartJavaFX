@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="appli.acceuil.ModificationUserController"
+            prefHeight="400.0" prefWidth="600.0">
+    <GridPane>
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Rôle:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="roleField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Button text="Valider" onAction="#validerModification" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Button text="Annuler" onAction="#annulerModification" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+</AnchorPane>

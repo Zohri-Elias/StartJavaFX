@@ -27,4 +27,8 @@ public class AccueilController {
         System.out.println("Utilisateur déconnecté");
         StartApplication.changeScene("accueil/Inscription");
     }
+    @FXML
+    void gestion(ActionEvent event) throws IOException {
+        StartApplication.changeScene("accueil/GestionUser");
+    }
 }

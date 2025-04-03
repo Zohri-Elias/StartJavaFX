@@ -127,7 +127,6 @@ public class UtilisateurRepository {
         } catch (SQLException e) {
             System.out.println("Erreur SQL : " + e.getMessage());
         }
-
         return null;
     }
     public void Update(Utilisateur utilisateur) {
