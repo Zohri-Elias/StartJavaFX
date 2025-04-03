@@ -33,11 +33,10 @@ public class LoginController {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
             if (passwordEncoder.matches(pass, utilisateur.getMdp())) {
+                System.out.println("Connexion réussie pour : " + utilisateur.getNom());
                 SessionUtilisateur.getInstance().sauvegardeSession(utilisateur);
-
-                System.out.println("Connexion réussie !");
                 erreurLabel.setVisible(false);
-                StartApplication.changeScene("accueil/accueilView");
+                StartApplication.changeScene("accueil/Acceuil");
             } else {
                 erreurLabel.setVisible(true);
                 erreurLabel.setText("Erreur : Mot de passe incorrect");
