@@ -22,8 +22,7 @@
 
         <Label text="Rôle:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <TextField fx:id="roleField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-        <Button text="Valider" onAction="#validerModification" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-        <Button text="Annuler" onAction="#annulerModification" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
     </GridPane>
+
+    <Button fx:id="btnValider" text="Valider" onAction="#validerModification" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
 </AnchorPane>

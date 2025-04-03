@@ -129,7 +129,7 @@ public class UtilisateurRepository {
         }
         return null;
     }
-    public void Update(Utilisateur utilisateur) {
+    public boolean updateUtilisateur(Utilisateur utilisateur) {
 
         String sql = " UPDATE utilisateur SET nom = ?, prenom = ?, mdp = ?, role = ? WHERE email = ?";
         try {
@@ -143,5 +143,6 @@ public class UtilisateurRepository {
         } catch (SQLException e) {
             System.out.println("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
         }
+        return true;
     }
 }
