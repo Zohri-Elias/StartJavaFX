@@ -1,6 +1,7 @@
 package appli.acceuil;
 
 import appli.StartApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Utilisateur;
@@ -25,5 +26,31 @@ public class ModificationUserController {
         prenomField.setText(utilisateur.getPrenom());
         emailField.setText(utilisateur.getEmail());
         roleField.setText(utilisateur.getRole());
+    }
+
+    @FXML
+    void validerModification() {
+        utilisateurSel.setNom(nomField.getText());
+        utilisateurSel.setPrenom(prenomField.getText());
+        utilisateurSel.setRole(roleField.getText());
+
+        if (userRepo.updateUtilisateur(utilisateurSel)) {
+            try {
+                StartApplication.changeScene("accueil/Acceuil");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Afficher un message d'erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Échec de la modification");
+            alert.setContentText("Une erreur est survenue lors de la modification de l'utilisateur.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    protected void btnRetour(ActionEvent actionEvent) throws IOException {
+        StartApplication.changeScene("accueil/Acceuil");
     }
 }

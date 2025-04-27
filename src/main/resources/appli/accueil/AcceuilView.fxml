@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.acceuil.AccueilController">
+<AnchorPane prefHeight="313.0" prefWidth="236.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.acceuil.AccueilController">
 
     <children>
-        <Button fx:id="btnDeconnexion" layoutX="514.0" layoutY="374.0" onAction="#handleLogout" text="Déconnexion" />
-      <Button layoutX="548.0" layoutY="1.0" mnemonicParsing="false" onAction="#gestion" text="Gestion" />
+        <Button fx:id="btnDeconnexion" layoutX="75.0" layoutY="204.0" onAction="#handleLogout" text="Déconnexion" />
+      <Button layoutX="50.0" layoutY="157.0" mnemonicParsing="false" onAction="#gestion" text="Gestion un utilisateur" />
+      <Label layoutX="69.0" layoutY="35.0" text="Acceuil">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

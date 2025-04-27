@@ -1,6 +1,7 @@
 package appli.acceuil;
 
 import appli.StartApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -41,6 +42,7 @@ public class GestionUserController implements Initializable {
             column.setCellValueFactory(new PropertyValueFactory<>(col[1]));
             tableauUser.getColumns().add(column);
         }
+        tableauUser.getItems().addAll(userRepo.getTousLesUtilisateurs());
     }
 
     private void chargerUtilisateurs() {
@@ -57,7 +59,7 @@ public class GestionUserController implements Initializable {
         // Gestion du double-clic
         if (event.getClickCount() == 2 && selection != null) {
             try {
-                StartApplication.changeScene("user/modificationUser");
+                StartApplication.changeScene("accueil/ModificationUser");
                 ModificationUserController controller =
                         (ModificationUserController) StartApplication.getControllerFromStage();
                 controller.initData(selection);
@@ -74,5 +76,9 @@ public class GestionUserController implements Initializable {
             usersData.remove(selection);
             btnSupprimer.setDisable(true);
         }
+    }
+    @FXML
+    protected void btnRetour(ActionEvent actionEvent) throws IOException {
+        StartApplication.changeScene("accueil/Acceuil");
     }
 }

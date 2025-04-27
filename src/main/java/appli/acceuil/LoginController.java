@@ -54,8 +54,8 @@ public class LoginController {
     }
 
     @FXML
-    protected void btnMdpOublie(ActionEvent actionEvent) {
-
+    protected void btnMdpOublie(ActionEvent actionEvent) throws IOException {
         System.out.println("Mot de passe oublié cliqué");
+        StartApplication.changeScene("accueil/MotDePasseOublie");
     }
 }

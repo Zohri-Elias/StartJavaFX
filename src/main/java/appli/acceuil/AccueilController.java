@@ -31,4 +31,8 @@ public class AccueilController {
     void gestion(ActionEvent event) throws IOException {
         StartApplication.changeScene("accueil/GestionUser");
     }
+
+    public void modifier(ActionEvent actionEvent) throws IOException {
+        StartApplication.changeScene("accueil/ModificationUser");
+    }
 }
