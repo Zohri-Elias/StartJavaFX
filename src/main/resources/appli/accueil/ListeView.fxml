@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="appli.acceuil.ListeController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="Gestion des listes" style="-fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="tfNomListe" promptText="Nom de la liste" HBox.hgrow="ALWAYS"/>
+        <Button text="Créer" onAction="#creerListe"/>
+    </HBox>
+
+    <ListView fx:id="listViewListes"/>
+
+    <HBox spacing="10">
+        <Button fx:id="btnModifier" text="Modifier" onAction="#modifierListe" disable="true"/>
+        <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerListe" disable="true"/>
+    </HBox>
+</VBox>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="appli.acceuil.TacheController"
+      prefHeight="400.0" prefWidth="600.0">
+<Label text="Gestion des tâches" style="-fx-font-weight: bold;"/>
+
+<!-- Filtres -->
+<HBox spacing="10">
+    <TextField fx:id="tfFiltre" promptText="Filtrer..." HBox.hgrow="ALWAYS"/>
+    <ComboBox fx:id="cbEtat" promptText="État"/>
+</HBox>
+
+<!-- Formulaire -->
+<HBox spacing="10">
+    <TextField fx:id="tfNomTache" promptText="Nom de la tâche" HBox.hgrow="ALWAYS"/>
+    <ComboBox fx:id="cbType" promptText="Type"/>
+    <Button text="Ajouter" onAction="#ajouterTache"/>
+</HBox>
+
+<!-- Tableau -->
+<TableView fx:id="tacheTable">
+    <columns>
+        <TableColumn text="Nom" prefWidth="200">
+            <cellValueFactory><PropertyValueFactory property="nom"/></cellValueFactory>
+        </TableColumn>
+        <TableColumn text="État" prefWidth="100">
+            <cellValueFactory><PropertyValueFactory property="etatString"/></cellValueFactory>
+        </TableColumn>
+    </columns>
+</TableView>
+
+<!-- Actions -->
+<HBox spacing="10">
+    <Button text="Modifier" onAction="#modifierTache"/>
+    <Button text="Supprimer" onAction="#supprimerTache"/>
+    <Button text="Changer État" onAction="#changerEtat"/>
+</HBox>
+</VBox>

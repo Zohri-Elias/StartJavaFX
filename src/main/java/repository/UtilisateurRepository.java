@@ -20,7 +20,7 @@
         }
 
         public void ajouterUtilisateur(Utilisateur utilisateur) {
-            String sql = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, role) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO utilisateur (id,nom, prenom, email, mot_de_passe, role) VALUES (null,?, ?, ?, ?, ?)";
             try {
                 PreparedStatement stmt = this.cnx.prepareStatement(sql);
                 stmt.setString(1, utilisateur.getNom());

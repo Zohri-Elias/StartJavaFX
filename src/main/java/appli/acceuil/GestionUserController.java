@@ -30,7 +30,7 @@ public class GestionUserController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Configuration des colonnes
         String[][] colonnes = {
-                {"Id Utilisateur", "idUser"},
+                {"Id Utilisateur", "id"},
                 {"Nom", "nom"},
                 {"Prénom", "prenom"},
                 {"Email", "email"},

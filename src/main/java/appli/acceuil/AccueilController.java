@@ -32,7 +32,13 @@ public class AccueilController {
         StartApplication.changeScene("accueil/GestionUser");
     }
 
-    public void modifier(ActionEvent actionEvent) throws IOException {
-        StartApplication.changeScene("accueil/ModificationUser");
+    @FXML
+    void liste(ActionEvent event) throws IOException {
+        StartApplication.changeScene("accueil/Liste");
+    }
+
+    @FXML
+    void tache(ActionEvent event) throws IOException {
+        StartApplication.changeScene("accueil/Tache");
     }
 }

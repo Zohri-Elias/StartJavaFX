@@ -8,9 +8,11 @@
 <AnchorPane prefHeight="313.0" prefWidth="236.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.acceuil.AccueilController">
 
     <children>
-        <Button fx:id="btnDeconnexion" layoutX="75.0" layoutY="204.0" onAction="#handleLogout" text="Déconnexion" />
-      <Button layoutX="50.0" layoutY="157.0" mnemonicParsing="false" onAction="#gestion" text="Gestion un utilisateur" />
-      <Label layoutX="69.0" layoutY="35.0" text="Acceuil">
+        <Button fx:id="btnDeconnexion" layoutX="72.0" layoutY="242.0" onAction="#handleLogout" prefHeight="25.0" prefWidth="86.0" text="Déconnexion" />
+      <Button layoutX="51.0" layoutY="124.0" mnemonicParsing="false" onAction="#gestion" text="Gestion un utilisateur" />
+        <Button layoutX="95.0" layoutY="167.0" mnemonicParsing="false" onAction="#liste" text="Liste" />
+        <Button layoutX="91.0" layoutY="205.0" mnemonicParsing="false" onAction="#tache" text="Tache" />
+        <Label layoutX="69.0" layoutY="35.0" text="Acceuil">
          <font>
             <Font size="31.0" />
          </font>
