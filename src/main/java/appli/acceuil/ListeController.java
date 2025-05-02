@@ -1,35 +1,40 @@
 package appli.acceuil;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import model.Liste;
 import repository.ListeRepository;
+import session.SessionUtilisateur;
+
+import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ListeController {
+public class ListeController implements Initializable {
     @FXML private ListView<Liste> listViewListes;
     @FXML private TextField tfNomListe;
     @FXML private Button btnModifier;
     @FXML private Button btnSupprimer;
 
     private VBox view;
-    private ListeRepository listeRepo;
+    private ListeRepository listeRepo ;
     private Connection cnx;
     private int idUtilisateurCourant;
 
-    public void initialize(int idUtilisateur, Connection cnx) {
-        this.idUtilisateurCourant = idUtilisateur;
-        this.cnx = cnx;
-        this.listeRepo = new ListeRepository(cnx);
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.idUtilisateurCourant = SessionUtilisateur.getInstance().getUtilisateur().getId();
+        this.listeRepo = new ListeRepository();
         chargerListes();
         configurerSelection();
     }
 
     private void chargerListes() {
-        List<Liste> listes = listeRepo.getListesParUtilisateur(idUtilisateurCourant);
+        List<Liste> listes = listeRepo.getListesParUtilisateurConnecte();
         listViewListes.getItems().setAll(listes);
     }
 

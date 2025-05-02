@@ -49,7 +49,7 @@ public class TypeController {
     }
 
     private void loadTypes() {
-        typeTable.getItems().setAll(typeRepo.getAllTypes(isAdmin));
+        typeTable.getItems().setAll(typeRepo.getAllTypes());
     }
 
     @FXML

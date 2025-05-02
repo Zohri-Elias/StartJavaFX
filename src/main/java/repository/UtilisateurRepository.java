@@ -20,7 +20,7 @@
         }
 
         public void ajouterUtilisateur(Utilisateur utilisateur) {
-            String sql = "INSERT INTO utilisateur (id,nom, prenom, email, mot_de_passe, role) VALUES (null,?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO utilisateur (id_utilisateur,nom, prenom, email, mot_de_passe, role) VALUES (null,?, ?, ?, ?, ?)";
             try {
                 PreparedStatement stmt = this.cnx.prepareStatement(sql);
                 stmt.setString(1, utilisateur.getNom());
@@ -44,6 +44,7 @@
 
                 if (rs.next()) {
                     Utilisateur user = new Utilisateur(
+                            rs.getInt("id_utilisateur"),
                             rs.getString("nom"),
                             rs.getString("prenom"),
                             rs.getString("email"),

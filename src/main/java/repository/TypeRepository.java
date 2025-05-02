@@ -7,6 +7,7 @@ import java.util.List;
 
 public class TypeRepository {
     private final Connection connection;
+    private boolean isAdmin;
 
     public TypeRepository(Connection connection) {
         this.connection = connection;
@@ -34,7 +35,7 @@ public class TypeRepository {
         return false;
     }
 
-    public List<Type> getAllTypes(boolean isAdmin) {
+    public List<Type> getAllTypes() {
         List<Type> types = new ArrayList<>();
         String sql = isAdmin ? "SELECT * FROM type"
                 : "SELECT * FROM type WHERE admin_only = false";

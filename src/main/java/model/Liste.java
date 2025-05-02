@@ -26,4 +26,9 @@ public class Liste {
     public void setCreateurId(int createurId) {
         this.createurId = createurId;
     }
+    @Override
+    public String toString() {
+        return this.nom;
+    }
+
 }

@@ -34,7 +34,7 @@ public class TacheController {
     }
 
     private void chargerTypes() {
-        typeRepo.getTousLesTypes().forEach(type ->
+        typeRepo.getAllTypes().forEach(type ->
                 cbType.getItems().add(type.getNom())
         );
     }

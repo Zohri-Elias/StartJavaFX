@@ -1,6 +1,9 @@
 package repository;
 
+import database.Database;
 import model.Liste;
+import session.SessionUtilisateur;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +11,8 @@ import java.util.List;
 public class ListeRepository {
     private Connection cnx;
 
-    public ListeRepository(Connection cnx) {
-        this.cnx = cnx;
+    public ListeRepository() {
+        this.cnx = Database.getConnexion();
     }
 
     public boolean creerListe(Liste liste) {
@@ -17,7 +20,20 @@ public class ListeRepository {
         try (PreparedStatement stmt = cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, liste.getNom());
             stmt.setInt(2, liste.getCreateurId());
-            return stmt.executeUpdate() > 0;
+
+            int rowsInserted = stmt.executeUpdate();
+            if (rowsInserted > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int idGenere = generatedKeys.getInt(1);
+                        liste.setIdListe(idGenere); // Optionnel : utile si tu veux utiliser l'ID ensuite
+                        System.out.println("ID généré = " + idGenere);
+                    }
+                }
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -45,6 +61,13 @@ public class ListeRepository {
             e.printStackTrace();
             return false;
         }
+    }
+    public List<Liste> getListesParUtilisateurConnecte() {
+        int id = SessionUtilisateur.getInstance().getUtilisateur().getId();
+        System.out.println("ID utilisateur connecté = " + id);
+        List<Liste> listes = this.getListesParUtilisateur(id);
+        System.out.println("Nombre de listes récupérées : " + listes.size());
+        return listes;
     }
 
     public List<Liste> getListesParUtilisateur(int idUtilisateur) {
