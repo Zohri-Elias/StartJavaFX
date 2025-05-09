@@ -19,14 +19,17 @@ public class ListeRepository {
         String sql = "INSERT INTO liste (nom, createur_id) VALUES (?, ?)";
         try (PreparedStatement stmt = cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, liste.getNom());
-            stmt.setInt(2, liste.getCreateurId());
+            int id = liste.getCreateurId();
+            System.out.println("Tentative de création avec createur_id = " + id);
+            stmt.setInt(2, id);
+
 
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         int idGenere = generatedKeys.getInt(1);
-                        liste.setIdListe(idGenere); // Optionnel : utile si tu veux utiliser l'ID ensuite
+                        liste.setIdListe(idGenere);
                         System.out.println("ID généré = " + idGenere);
                     }
                 }
@@ -72,7 +75,7 @@ public class ListeRepository {
 
     public List<Liste> getListesParUtilisateur(int idUtilisateur) {
         List<Liste> listes = new ArrayList<>();
-        String sql = "SELECT l.* FROM liste l JOIN utilisateur_liste ul ON l.id_liste = ul.ref_liste WHERE ul.ref_utilisateur = ? OR l.createur_id = ?";
+        String sql = "SELECT l.* FROM liste l LEFT JOIN utilisateur_liste ul ON l.id_liste = ul.ref_liste WHERE ul.ref_utilisateur = ? OR l.createur_id = ?";
 
         try (PreparedStatement stmt = cnx.prepareStatement(sql)) {
             stmt.setInt(1, idUtilisateur);

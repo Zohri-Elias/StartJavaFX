@@ -21,13 +21,13 @@ public class ListeController implements Initializable {
 
     private VBox view;
     private ListeRepository listeRepo ;
-    private Connection cnx;
     private int idUtilisateurCourant;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.idUtilisateurCourant = SessionUtilisateur.getInstance().getUtilisateur().getId();
+        System.out.println("ID utilisateur courant (depuis SessionUtilisateur) = " + idUtilisateurCourant);
         this.listeRepo = new ListeRepository();
         chargerListes();
         configurerSelection();

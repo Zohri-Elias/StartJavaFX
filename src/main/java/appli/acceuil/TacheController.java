@@ -3,14 +3,19 @@ package appli.acceuil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Tache;
 import repository.TacheRepository;
 import repository.TypeRepository;
-import java.sql.Connection;
+import appli.StartApplication;
 
-public class TacheController {
+import java.net.URL;
+import java.sql.Connection;
+import java.util.ResourceBundle;
+
+public class TacheController implements Initializable {
     @FXML private TableView<Tache> tacheTable;
     @FXML private TextField tfNomTache;
     @FXML private ComboBox<String> cbType;
@@ -22,15 +27,30 @@ public class TacheController {
     private ObservableList<Tache> toutesLesTaches;
     private FilteredList<Tache> tachesFiltrees;
     private int listeCouranteId;
+    private Connection cnx;
 
-    public void initialize(int listeId, Connection cnx) {
-        this.listeCouranteId = listeId;
-        this.tacheRepo = new TacheRepository(cnx);
-        this.typeRepo = new TypeRepository(cnx);
+    // Données à injecter AVANT le changement de scène
+    private static int staticListeId;
+    private static Connection staticConnexion;
 
-        chargerTypes();
+    public static void setInitParams(int listeId, Connection connection) {
+        staticListeId = listeId;
+        staticConnexion = connection;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         initialiserFiltres();
-        chargerTaches();
+
+        // Injection des données statiques
+        if (staticConnexion != null) {
+            this.listeCouranteId = staticListeId;
+            this.cnx = staticConnexion;
+            this.tacheRepo = new TacheRepository(cnx);
+            this.typeRepo = new TypeRepository(cnx);
+            chargerTypes();
+            chargerTaches();
+        }
     }
 
     private void chargerTypes() {

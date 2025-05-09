@@ -98,6 +98,7 @@
 
                 while (rs.next()) {
                     Utilisateur user = new Utilisateur(
+                            rs.getInt("id_utilisateur"),
                             rs.getString("nom"),
                             rs.getString("prenom"),
                             rs.getString("email"),
@@ -125,14 +126,14 @@
             }
         }
         public boolean updateUtilisateur(Utilisateur utilisateur) {
-
-            String sql = " UPDATE utilisateur SET nom = ?, prenom = ?, mdp = ?, role = ? WHERE email = ?";
+            System.out.println("id utilisateur : " + utilisateur.getId());
+            String sql = " UPDATE utilisateur SET nom = ?, prenom = ?, role = ? WHERE id_utilisateur = ?";
             try {
                 PreparedStatement stmt = this.cnx.prepareStatement(sql);
                 stmt.setString(1, utilisateur.getNom());
                 stmt.setString(2, utilisateur.getPrenom());
-                stmt.setString(3, utilisateur.getMdp());
-                stmt.setString(4, utilisateur.getRole());
+                stmt.setString(3, utilisateur.getRole());
+                stmt.setInt(4, utilisateur.getId());
                 stmt.executeUpdate();
                 System.out.println("Utilisateur ajouté avec succès !");
             } catch (SQLException e) {

@@ -13,12 +13,12 @@ public class Database {
     }
 
     private static final String SERVEUR = "localhost";
-    // private static final String PORT = "3307";
+    private static final String PORT = "3307";
     private static final String NOM_BDD = "cours_todolist";
     private static final String UTILISATEUR = "root";
     private static final String MOT_DE_PASSE = "";
     private static String getUrl() {
-        return "jdbc:mysql://" + SERVEUR + "/" + NOM_BDD + "?serverTimezone=UTC";
+        return "jdbc:mysql://" + SERVEUR + ":" + PORT + "/" + NOM_BDD + "?serverTimezone=UTC";
     } // PORT + "/" +
     public static Connection getConnexion() {
         Connection cnx = null;

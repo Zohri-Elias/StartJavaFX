@@ -8,6 +8,7 @@ public class Liste {
     public Liste(int idListe, String nom, int createurId) {
         this.idListe = idListe;
         this.nom = nom;
+        this.createurId = createurId;
     }
 
     public int getIdListe() { return idListe; }
